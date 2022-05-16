@@ -30,28 +30,38 @@
 ```yaml
 # 设置背景宽度，背景模式为IMAGE时无效
 width: 1000
+
 # 设置背景高度，背景模式为IMAGE时无效
 height: 1000
+
 # 设置字体大小下限
 minFontSize: 30
+
 # 设置字体大小上限
 maxFontSize: 100
+
 # 设置词的数量
 wordsReturn: 500
+
 # 设置词的最短长度
 minWordLength: 2
+
 # 自动过滤匹配的内容，支持正则表达式
 removeRegex: 
   - 自定义
   - 屏蔽词汇
+  
 # 设置词云的背景模式,可选 CIRCLE,RECTANGLE,IMAGE 三种模式
 backgroundMode: 'CIRCLE'
+
 # 若背景模式为IMAGE,需要此项来指定背景图片,必须是PNG格式，透明部分不填充文字
 # 请填写data/FrameImage目录下放置的图片名称，如:\"default.png\"（可以填多个，生成时则随机选用）
 # 生成云图的大小与指定图片相同
 imageName: []
+
 # 设置词云选用指定的字体，请填写data/Font/目录下放置的字体文件名，如:\"思源黑体.ttf\"
 fontPath: ''
+
 # 设置词云文字可选的颜色,用16进制表示，越靠前的颜色对应的频率越高
 colorList:
   - 253DF3
@@ -59,6 +69,7 @@ colorList:
   - 408DF1
   - 40AAF1
   - 40C5F1
+  
 # 文字角度，默认横向与竖向夹杂,值为 HORIZON 只有横向，值为 VERTICAL 只有竖向，值为 RANDOM 角度随机
 textAngle: ''
 ```
