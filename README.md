@@ -55,11 +55,11 @@ removeRegex:
 backgroundMode: 'CIRCLE'
 
 # 若背景模式为IMAGE,需要此项来指定背景图片,必须是PNG格式，透明部分不填充文字
-# 请填写data/FrameImage目录下放置的图片名称，如:\"default.png\"（可以填多个，生成时则随机选用）
+# 请填写data/FrameImage目录下放置的图片名称，如:"default.png"（可以填多个，生成时则随机选用）
 # 生成云图的大小与指定图片相同
 imageName: []
 
-# 设置词云选用指定的字体，请填写data/Font/目录下放置的字体文件名，如:\"思源黑体.ttf\"
+# 设置词云选用指定的字体，请填写data/Font/目录下放置的字体文件名，如:"思源黑体.ttf"
 fontPath: ''
 
 # 设置词云文字可选的颜色,用16进制表示，越靠前的颜色对应的频率越高
