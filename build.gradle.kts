@@ -19,5 +19,5 @@ dependencies {
     implementation ("com.huaban:jieba-analysis:1.0.2")
     implementation("com.kennycason:kumo-core:1.28")
     compileOnly("xyz.cssxsh.mirai:mirai-hibernate-plugin:${hibernateVer}")
-    testImplementation("xyz.cssxsh.mirai:mirai-hibernate-plugin:${hibernateVer}")
+//    testImplementation("xyz.cssxsh.mirai:mirai-hibernate-plugin:${hibernateVer}")
 }
