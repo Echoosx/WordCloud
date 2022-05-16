@@ -32,13 +32,13 @@ object WordCloudConfig:AutoSavePluginConfig("Setting") {
 
     @ValueDescription("""
        若背景模式为IMAGE,需要此项来指定背景图片,必须是PNG格式，透明部分不填充文字
-       请填写data/FrameImage目录下放置的图片名称，如:\"default.png\"（可以填多个，生成时则随机选用）
+       请填写data/FrameImage目录下放置的图片名称，如:"default.png"（可以填多个，生成时则随机选用）
        生成云图的大小与指定图片相同
     """)
     val imageName:List<String> by value()
 
     @ValueDescription("""
-       设置词云选用指定的字体，请填写data/Font/目录下放置的字体文件名，如:\"思源黑体.ttf\"
+       设置词云选用指定的字体，请填写data/Font/目录下放置的字体文件名，如:"思源黑体.ttf"
     """)
     val fontPath: String by value()
 
