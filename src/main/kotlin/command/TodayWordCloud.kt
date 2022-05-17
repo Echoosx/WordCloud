@@ -10,6 +10,7 @@ import net.mamoe.mirai.console.command.descriptor.ExperimentalCommandDescriptors
 import net.mamoe.mirai.console.util.ConsoleExperimentalApi
 import net.mamoe.mirai.contact.Contact.Companion.sendImage
 import net.mamoe.mirai.event.events.GroupMessageEvent
+import net.mamoe.mirai.message.data.*
 import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
 import org.echoosx.mirai.plugin.WordCloud
 import org.echoosx.mirai.plugin.WordCloud.dataFolder
@@ -37,8 +38,8 @@ object TodayWordCloud:SimpleCommand(
             val segment = JiebaSegmenter()
 
             val countList = mutableListOf<String>()
-            rec.filter{ it.time >= start }.filter { it.code.contains(""""type":"PlainText"""") }.forEach {
-                var sentence = it.toMessageSource().originalMessage.toString().replace(Regex("\\[.+?]")," ")
+            rec.filter{ it.time >= start }.filter { it.code.contains("PlainText") }.forEach {
+                var sentence = it.toMessageChain().content.replace(Regex("\\[.+?]")," ")
                 removeRegex.forEach{ regex->
                     sentence = sentence.replace(Regex(regex)," ")
                 }

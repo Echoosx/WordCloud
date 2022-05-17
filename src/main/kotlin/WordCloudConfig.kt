@@ -21,7 +21,7 @@ object WordCloudConfig:AutoSavePluginConfig("Setting") {
     @ValueDescription("设置词的数量")
     val wordsReturn:Int by value(300)
 
-    @ValueDescription("设置分词的最短长度")
+    @ValueDescription("设置词的最短长度")
     val minWordLength:Int by value(2)
 
     @ValueDescription("自动过滤匹配的内容，支持正则表达式")
