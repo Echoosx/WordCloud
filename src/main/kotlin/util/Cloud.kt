@@ -26,6 +26,7 @@ import org.echoosx.mirai.plugin.WordCloudConfig.wordsReturn
 import java.awt.Color
 import java.awt.Dimension
 import java.io.File
+import java.io.IOException
 import javax.imageio.ImageIO
 
 
@@ -47,11 +48,17 @@ object Cloud {
                 wordCloud.setBackground(RectangleBackground(dimension))
             }
             "IMAGE" -> {
-                val imageFile = File("${dataFolder.absolutePath}/FrameImage/${imageName.random()}")
-                val image = ImageIO.read(imageFile)
-                val imageDimension = Dimension(image.width,image.height)
-                wordCloud = com.kennycason.kumo.WordCloud(imageDimension, CollisionMode.PIXEL_PERFECT)
-                wordCloud.setBackground(PixelBoundaryBackground(imageFile))
+                val path = "${dataFolder.absolutePath}/FrameImage/${imageName.random()}"
+                WordCloud.logger.info(path)
+                try {
+                    val imageFile = File(path)
+                    val image = ImageIO.read(imageFile)
+                    val imageDimension = Dimension(image.width,image.height)
+                    wordCloud = com.kennycason.kumo.WordCloud(imageDimension, CollisionMode.PIXEL_PERFECT)
+                    wordCloud.setBackground(PixelBoundaryBackground(imageFile))
+                }catch (e: IOException){
+                    throw IOException("$path 图片不存在！")
+                }
             }
         }
         // 最小分词长度

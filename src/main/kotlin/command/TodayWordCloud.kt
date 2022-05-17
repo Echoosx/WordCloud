@@ -60,6 +60,7 @@ object TodayWordCloud:SimpleCommand(
             }
         }catch (e:Throwable){
             sendMessage("词云生成失败")
+            logger.error(e)
         }
     }
 

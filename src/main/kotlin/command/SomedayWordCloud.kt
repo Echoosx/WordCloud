@@ -5,6 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.mamoe.mirai.console.command.CommandSenderOnMessage
 import net.mamoe.mirai.console.command.SimpleCommand
+import net.mamoe.mirai.contact.Contact
 import net.mamoe.mirai.contact.Contact.Companion.sendImage
 import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.message.data.content
@@ -26,9 +27,9 @@ object SomedayWordCloud:SimpleCommand(
     private val logger get() = WordCloud.logger
     @Suppress("unused")
     @Handler
-    suspend fun CommandSenderOnMessage<GroupMessageEvent>.handle(dateStr: String){
+    suspend fun CommandSenderOnMessage<GroupMessageEvent>.handle(dateStr: String,contact: Contact = subject as Contact){
         try {
-            val rec = MiraiHibernateRecorder[this.fromEvent.group]
+            val rec = MiraiHibernateRecorder[contact]
             val (start, end) = date2timestamp(dateStr)
             val segment = JiebaSegmenter()
 
@@ -61,6 +62,7 @@ object SomedayWordCloud:SimpleCommand(
             sendMessage("日期格式有误，请按照\"yyyy-MM-dd\"格式输入日期\n示例：/词云 1970-01-01")
         } catch (e:Throwable){
             sendMessage("词云生成失败")
+            logger.error(e)
         }
     }
 
