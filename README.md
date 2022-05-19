@@ -15,14 +15,14 @@
 ## 指令
 注意: 使用前请确保可以 [在聊天环境执行指令](https://github.com/project-mirai/chat-command)  
 带括号的`/`前缀是缺省的  
-`<...>`中的是指令名，由`空格`隔开表示其中任一名称都可执行  
+`<...>`中的是指令名，由`｜`隔开表示其中任一名称都可执行  
 `[...]`表示参数，当`[...]`后面带`?`时表示参数可选  
 `{...}`表示连续的多个参数
 
 
 | 指令                   | 描述          |权限名称       |
 |:---------------------|:------------|:--------|
-| `(/)<本日词云 今日词云>` | 生成今日收集到的词云  |org.echoosx.mirai.plugin.wordcloud:command.今日词云|
+| `(/)<本日词云｜今日词云>` | 生成今日收集到的词云  |org.echoosx.mirai.plugin.wordcloud:command.今日词云|
 | `/<词云> [yyyy-MM-dd] [groupid]?` | 生成某日某群收集到的词云 |org.echoosx.mirai.plugin.wordcloud:command.词云|
 
 ## 配置
