@@ -10,6 +10,8 @@ import com.kennycason.kumo.font.scale.LinearFontScalar
 import com.kennycason.kumo.image.AngleGenerator
 import com.kennycason.kumo.nlp.FrequencyAnalyzer
 import com.kennycason.kumo.palette.ColorPalette
+import net.mamoe.mirai.utils.ExternalResource
+import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
 import org.echoosx.mirai.plugin.WordCloud
 import org.echoosx.mirai.plugin.WordCloud.dataFolder
 import org.echoosx.mirai.plugin.WordCloudConfig.backgroundMode
@@ -27,11 +29,12 @@ import java.awt.Color
 import java.awt.Dimension
 import java.io.File
 import java.io.IOException
+import java.util.*
 import javax.imageio.ImageIO
 
 
 object Cloud {
-    fun generate(result:MutableList<String>){
+    fun generate(result:MutableList<String>):ExternalResource{
         val frequencyAnalyzer = FrequencyAnalyzer()
         // 引入中文解析器
         // frequencyAnalyzer.setWordTokenizer(ChineseWordTokenizer())
@@ -88,6 +91,19 @@ object Cloud {
         }
 
         wordCloud.build(wordFrequencies)
-        wordCloud.writeToFile("${dataFolder.absolutePath}/cloud.png")
+        val outputPath = "${dataFolder.absolutePath}/Cloud/${getRandomString(8)}.png"
+        wordCloud.writeToFile(outputPath)
+        return File(outputPath).toExternalResource()
+    }
+
+    private fun getRandomString(length: Int): String {
+        val str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        val random = Random()
+        val sb = StringBuffer()
+        for (i in 0 until length) {
+            val number: Int = random.nextInt(62)
+            sb.append(str[number])
+        }
+        return sb.toString()
     }
 }

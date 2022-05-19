@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "org.echoosx"
-version = "1.0.0"
+version = "1.1.0"
 val hibernateVer = "2.1.1"
 
 repositories {
@@ -19,5 +19,6 @@ dependencies {
     implementation ("com.huaban:jieba-analysis:1.0.2")
     implementation("com.kennycason:kumo-core:1.28")
     compileOnly("xyz.cssxsh.mirai:mirai-hibernate-plugin:${hibernateVer}")
-//    testImplementation("xyz.cssxsh.mirai:mirai-hibernate-plugin:${hibernateVer}")
+    testImplementation("xyz.cssxsh.mirai:mirai-hibernate-plugin:${hibernateVer}")
+    implementation("org.quartz-scheduler:quartz:2.3.2")
 }

@@ -4,9 +4,15 @@ import net.mamoe.mirai.console.command.CommandManager.INSTANCE.register
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.utils.info
+import org.echoosx.mirai.plugin.DailyWorldCloudConfig.dailyWordCloudHour
+import org.echoosx.mirai.plugin.DailyWorldCloudConfig.dailyWordCloudMin
 import org.echoosx.mirai.plugin.command.SomedayWordCloud
 import org.echoosx.mirai.plugin.command.TodayWordCloud
-import xyz.cssxsh.mirai.plugin.MiraiHibernateConfiguration
+import org.echoosx.mirai.plugin.util.Daily
+import org.quartz.CronScheduleBuilder
+import org.quartz.JobBuilder
+import org.quartz.TriggerBuilder
+import org.quartz.impl.StdSchedulerFactory
 import java.io.File
 
 
@@ -14,7 +20,7 @@ object WordCloud : KotlinPlugin(
     JvmPluginDescription(
         id = "org.echoosx.mirai.plugin.WordCloud",
         name = "WordCloud",
-        version = "1.0.0"
+        version = "1.1.0"
     ) {
         author("Echoosx")
         dependsOn("xyz.cssxsh.mirai.plugin.mirai-hibernate-plugin", false)
@@ -24,16 +30,29 @@ object WordCloud : KotlinPlugin(
         logger.info { "WordCloud loaded" }
 
         WordCloudConfig.reload()
+        DailyWorldCloudConfig.reload()
         TodayWordCloud.register()
         SomedayWordCloud.register()
 
-        val factory = MiraiHibernateConfiguration(plugin = this).buildSessionFactory()
-        factory.openSession().use { session ->
-            session.doReturningWork { connection -> connection.metaData }
-        }
-
         touchDir("${dataFolderPath}/FrameImage")
         touchDir("${dataFolderPath}/Font")
+        touchDir("${dataFolderPath}/Cloud")
+
+        val cronSchedule = "0 $dailyWordCloudMin $dailyWordCloudHour * * ?"
+        val scheduler = StdSchedulerFactory.getDefaultScheduler()
+
+        val jobDetail = JobBuilder.newJob(Daily::class.java)
+            .build()
+
+        val trigger = TriggerBuilder.newTrigger()
+            .withSchedule(
+                CronScheduleBuilder.cronSchedule(cronSchedule)
+            )
+            .startNow()
+            .build()
+
+        scheduler.scheduleJob(jobDetail, trigger)
+        scheduler.start()
     }
 
     private fun touchDir(dirPath: String): Boolean {
@@ -45,7 +64,6 @@ object WordCloud : KotlinPlugin(
         if (!destDirName.endsWith(File.separator)) {
             destDirName += File.separator
         }
-        //创建目录
         return if (dir.mkdirs()) {
             true
         } else {
