@@ -23,7 +23,7 @@
 | 指令                   | 描述          |
 |:---------------------|:------------|
 | `(/)<本日词云 今日词云>` | 生成今日收集到的词云  |
-| `/<词云> [yyyy-MM-dd]` | 生成某一日收集到的词云 |
+| `/<词云> [yyyy-MM-dd] [groupid]?` | 生成某日某群收集到的词云 |
 
 ## 配置
 ### Setting.yml
@@ -73,6 +73,19 @@ colorList:
 # 文字角度，默认横向与竖向夹杂,值为 HORIZON 只有横向，值为 VERTICAL 只有竖向，值为 RANDOM 角度随机
 textAngle: ''
 ```
+### Daily.yml
+```yaml
+# 订阅每日词云的群号
+dailyWordCloudGroup: 
+  - 123456
+  
+# 每日词云的发送时间(h)
+dailyWordCloudHour: 23
+
+# 每日词云的发送时间(min)
+dailyWordCloudMin: 59
+```
+
 ## 安装
 - 下载安装 [前置插件](https://github.com/cssxsh/mirai-hibernate-plugin/releases/tag/v2.1.1) `jar`包，将其放入工作目录下`plugins`文件夹
 - 从 [Releases](https://github.com/Echoosx/WordCloud/releases) 下载`jar`包，也放入`plugins`文件夹
