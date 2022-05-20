@@ -17,7 +17,6 @@ internal fun generateCloudImage(group: Group,dateStr: String): ExternalResource?
     val countList = mutableListOf<String>()
 
     rec.filter { it.time in start until end }.filter { it.code.contains("PlainText") }.forEach {
-        println("test")
         var sentence = it.toMessageChain().content.replace(Regex("\\[.+?]"), " ")
         removeRegex.forEach { regex ->
             sentence = sentence.replace(Regex(regex), " ")

@@ -20,7 +20,7 @@ object WordCloud : KotlinPlugin(
     JvmPluginDescription(
         id = "org.echoosx.mirai.plugin.WordCloud",
         name = "WordCloud",
-        version = "1.1.0"
+        version = "1.1.1"
     ) {
         author("Echoosx")
         dependsOn("xyz.cssxsh.mirai.plugin.mirai-hibernate-plugin", false)

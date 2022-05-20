@@ -20,7 +20,7 @@ object SomedayWordCloud:SimpleCommand(
     @Handler
     suspend fun CommandSenderOnMessage<GroupMessageEvent>.handle(dateStr: String, group: Group = subject as Group){
         try {
-            val resource = generateCloudImage(subject as Group, dateStr)
+            val resource = generateCloudImage(group, dateStr)
             if(resource != null){
                 subject?.sendImage(resource)
                 withContext(Dispatchers.IO) { resource.close() }
