@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "org.echoosx"
-version = "1.1.1"
+version = "1.1.2"
 val hibernateVer = "2.1.1"
 
 repositories {
