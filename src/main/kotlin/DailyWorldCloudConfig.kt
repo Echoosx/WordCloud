@@ -11,6 +11,6 @@ object DailyWorldCloudConfig:AutoSavePluginConfig("Daily") {
     @ValueDescription("每日词云的发送时间(h)")
     val dailyWordCloudHour:Int by value(23)
 
-    @ValueDescription("每日词云的发送时间(h)")
+    @ValueDescription("每日词云的发送时间(min)")
     val dailyWordCloudMin:Int by value(59)
 }

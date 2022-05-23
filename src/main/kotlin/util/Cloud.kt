@@ -52,7 +52,6 @@ object Cloud {
             }
             "IMAGE" -> {
                 val path = "${dataFolder.absolutePath}/FrameImage/${imageName.random()}"
-                WordCloud.logger.info(path)
                 try {
                     val imageFile = File(path)
                     val image = ImageIO.read(imageFile)

@@ -9,14 +9,12 @@ import xyz.cssxsh.mirai.plugin.MiraiHibernateRecorder
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 internal fun generateCloudImage(group: Group,dateStr: String): ExternalResource? {
-    val rec = MiraiHibernateRecorder[group]
     val (start, end) = date2timestamp(dateStr)
     val segment = JiebaSegmenter()
     val countList = mutableListOf<String>()
 
-    rec.filter { it.time in start until end }.filter { it.code.contains("PlainText") }.forEach {
+    MiraiHibernateRecorder[group].filter { it.time in start until end }.filter { it.code.contains("PlainText") }.forEach {
         var sentence = it.toMessageChain().content.replace(Regex("\\[.+?]"), " ")
         removeRegex.forEach { regex ->
             sentence = sentence.replace(Regex(regex), " ")
