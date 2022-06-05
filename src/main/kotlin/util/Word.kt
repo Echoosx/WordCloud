@@ -5,7 +5,8 @@ import net.mamoe.mirai.contact.Group
 import net.mamoe.mirai.message.data.content
 import net.mamoe.mirai.utils.ExternalResource
 import org.echoosx.mirai.plugin.WordCloudConfig.removeRegex
-import xyz.cssxsh.mirai.plugin.MiraiHibernateRecorder
+import xyz.cssxsh.mirai.hibernate.MiraiHibernateRecorder
+
 import java.text.SimpleDateFormat
 import java.util.*
 

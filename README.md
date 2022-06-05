@@ -20,10 +20,10 @@
 `{...}`表示连续的多个参数
 
 
-| 指令                   | 描述          |权限名称       |
-|:---------------------|:------------|:--------|
-| `(/)<本日词云｜今日词云>` | 生成今日收集到的词云  |org.echoosx.mirai.plugin.wordcloud:command.今日词云|
-| `/<词云> [yyyy-MM-dd] [groupid]?` | 生成某日某群收集到的词云 |org.echoosx.mirai.plugin.wordcloud:command.词云|
+| 指令                   | 描述          | 权限id                                            |
+|:---------------------|:------------|:------------------------------------------------|
+| `(/)<本日词云｜今日词云>` | 生成今日收集到的词云  | `org.echoosx.mirai.plugin.wordcloud:command.今日词云` |
+| `/<词云> [yyyy-MM-dd] [groupid]?` | 生成某日某群收集到的词云 | `org.echoosx.mirai.plugin.wordcloud:command.词云`   |
 
 ## 配置
 ### Setting.yml
@@ -87,6 +87,6 @@ dailyWordCloudMin: 59
 ```
 
 ## 安装
-- 下载安装 [前置插件](https://github.com/cssxsh/mirai-hibernate-plugin/releases/tag/v2.1.1) `jar`包，将其放入工作目录下`plugins`文件夹
+- 下载安装 [前置插件](https://github.com/cssxsh/mirai-hibernate-plugin/releases/tag/v2.2.3) `jar`包，将其放入工作目录下`plugins`文件夹
 - 从 [Releases](https://github.com/Echoosx/WordCloud/releases) 下载`jar`包，也放入`plugins`文件夹
 - 如果没有`plugins`文件夹，先运行 [Mirai Console](https://github.com/mamoe/mirai-console) ，会自动生成
